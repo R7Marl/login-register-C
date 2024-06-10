@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1717444044 source:c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\sistema_cuentas\main.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"user.c"
+
+1717441100 c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\sistema_cuentas\user.h
+
+1717441100 c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\sistema_cuentas\user.c
+	"user.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1717793648 source:c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\sistema_cuentas - copia\main.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<windows.h>
+	<locale.h>
+	"user.c"
+
+1717794426 c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\sistema_cuentas - copia\user.c
+	"user.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1717791340 c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\sistema_cuentas - copia\user.h
+
