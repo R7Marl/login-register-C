@@ -2,25 +2,23 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-<<<<<<< HEAD
 // para leer caracteres en español
 //#include <windows.h>
 //#include <locale.h>
 //
 
 #define FILE "data/a.txt"
-=======
-#include "../include/user.h"
-#include "user.c"
-#define FILE "../data/users.txt"
 
->>>>>>> main
-
+// prototipos de funciones
 void register_promp();
 void login_promp();
 void buscar_cuentas_por_id_promp();
 
 int main() {
+    // 3 líneas de código para que puedan leerse caracteres en español
+   /* setlocale(LC_ALL, "");
+    SetConsoleCP(1252);
+    SetConsoleOutputCP(1252);*/
     int option;
     char input[50];
     do
