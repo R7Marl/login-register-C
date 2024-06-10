@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1718038592 source:c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\login-register-c\src\main.c
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	"../include/user.h"
+	"user.c"
+
+1718034735 c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\login-register-c\include\user.h
+
+1718038808 c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\login-register-c\src\user.c
+	"../include/user.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
