@@ -1,10 +1,20 @@
+#include "user.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+<<<<<<< HEAD
+// para leer caracteres en español
+//#include <windows.h>
+//#include <locale.h>
+//
+
+#define FILE "data/a.txt"
+=======
 #include "../include/user.h"
 #include "user.c"
 #define FILE "../data/users.txt"
 
+>>>>>>> main
 
 void register_promp();
 void login_promp();
@@ -66,7 +76,9 @@ void register_promp() {
     printf("Ingresa la contraseña: ");
     scanf("%49s", user->password);
     fflush(stdin);
-    int result = register_user(FILE, user);
+    char filename[100];
+    sprintf(filename, "data/%s.txt", user->username);
+    int result = register_user(filename, user);
     if(result == 0) {
         printf("El usuario ha sido creado con éxito\n");
     } else {
@@ -83,10 +95,12 @@ void login_promp() {
     printf("Ingresa el usuario: ");
     scanf("%49s", user->username);
     fflush(stdin);
-    printf("Ingresa la contraseña: ");
+    printf("Ingresa la contraseña: ");//a
     scanf("%49s", user->password);
     fflush(stdin);
-    int result = login_user(FILE, user);
+    char filename[100];
+    sprintf(filename, "data/%s.txt", user->username);
+    int result = login_user(filename, user);
     if(result == 0) {
         printf("Se ha iniciado sesión\n");
     } else {

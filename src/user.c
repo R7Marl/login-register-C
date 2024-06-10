@@ -9,6 +9,15 @@ int register_user(const char *file, User *user) { // Función para registrar un 
         printf("Error al crear el usuario\n");
         return -1;
     }
+<<<<<<< HEAD
+    FILE *fp = fopen(file, "w");// Abre el archivo users.txt
+      printf("Generando un archivo nuevo...");
+      user->id = generar_id("contador_id.txt");
+     // encriptar_password(user->password);
+      fprintf(fp, "%s %s %d \n", user->username, user->password, user->id);
+      fclose(fp);
+      return 0;
+=======
     FILE *fp = fopen(file, "a"); // Abre el archivo users.txt
     if (fp == NULL) {
         printf("Error al abrir el archivo\n"); // Si el archivo no existe va a arrojar este error
@@ -21,6 +30,7 @@ int register_user(const char *file, User *user) { // Función para registrar un 
     fprintf(fp, "%s %s %d \n", user->username, user->password, user->id); // Escribe el usuario en el archivo
     fclose(fp); // Cierra el archivo
     return 0; // Devuelve 0
+>>>>>>> main
 }
 
 int login_user(const char *file, User *user) // Función para iniciar sesión
@@ -45,6 +55,7 @@ int login_user(const char *file, User *user) // Función para iniciar sesión
         }
     }
     fclose(fp);
+    printf("Usuario o contraseña incorrectos\n");
     return -1; // Si no coinciden devuelve -1
 
 }
@@ -94,7 +105,11 @@ void encriptar_password(char *password) {
 // de los ID un ID unico.
 int generar_id(const char *file){
     static int contador_id = 1;
+<<<<<<< HEAD
+    FILE *fp = fopen(file, "r+");
+=======
     FILE *fp = fopen("../data/contador_id.txt", "r+");
+>>>>>>> main
     if (fp == NULL) {
         printf("Error al abrir el archivo\n");
         return -1;
@@ -108,5 +123,4 @@ int generar_id(const char *file){
 //    } while (id_nuevo <= 0);
     fclose(fp);
     return id_nuevo;
-
 }
