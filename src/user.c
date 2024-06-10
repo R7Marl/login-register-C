@@ -1,4 +1,4 @@
-#include "../include/user.h"
+#include "user.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -9,7 +9,6 @@ int register_user(const char *file, User *user) { // Función para registrar un 
         printf("Error al crear el usuario\n");
         return -1;
     }
-<<<<<<< HEAD
     FILE *fp = fopen(file, "w");// Abre el archivo users.txt
       printf("Generando un archivo nuevo...");
       user->id = generar_id("contador_id.txt");
@@ -17,20 +16,6 @@ int register_user(const char *file, User *user) { // Función para registrar un 
       fprintf(fp, "%s %s %d \n", user->username, user->password, user->id);
       fclose(fp);
       return 0;
-=======
-    FILE *fp = fopen(file, "a"); // Abre el archivo users.txt
-    if (fp == NULL) {
-        printf("Error al abrir el archivo\n"); // Si el archivo no existe va a arrojar este error
-        return -1;
-    }
-    // se genera un id unico e incremental con cada uso
-    user->id = generar_id("contador_id.txt");
-    // se encripta la contraseña mediante encriptacion XOR antes de guardarse en el archivo
-    //encriptar_password(user->password);
-    fprintf(fp, "%s %s %d \n", user->username, user->password, user->id); // Escribe el usuario en el archivo
-    fclose(fp); // Cierra el archivo
-    return 0; // Devuelve 0
->>>>>>> main
 }
 
 int login_user(const char *file, User *user) // Función para iniciar sesión
@@ -105,22 +90,18 @@ void encriptar_password(char *password) {
 // de los ID un ID unico.
 int generar_id(const char *file){
     static int contador_id = 1;
-<<<<<<< HEAD
     FILE *fp = fopen(file, "r+");
-=======
-    FILE *fp = fopen("../data/contador_id.txt", "r+");
->>>>>>> main
     if (fp == NULL) {
         printf("Error al abrir el archivo\n");
         return -1;
     }
     fscanf(fp, "%d", &contador_id);
     int id_nuevo;
-//    do {
+    do {
         id_nuevo = contador_id++;
         rewind(fp);
         fprintf(fp, "%d", contador_id);
-//    } while (id_nuevo <= 0);
+    } while (id_nuevo <= 0);
     fclose(fp);
     return id_nuevo;
 }
