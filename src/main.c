@@ -1,8 +1,8 @@
+#include "../include/user.h"
+#include "user.c"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "../include/user.h"
-#include "user.c"
 #define FILE "../data/users.txt"
 
 
@@ -16,7 +16,7 @@ int main() {
     do
     {
         printf("1. Registrar usuario\n");
-        printf("2. Iniciar sesión\n");
+        printf("2. Login \n");
         printf("3. Buscar cuenta por ID\n");
         printf("4. Salir\n");
         printf("Ingresa una opcion: ");
@@ -54,47 +54,107 @@ int main() {
     return 0;
 }
 
+//void register_promp() {
+//    User *user = (User *)malloc(sizeof(User));
+//    if(user == NULL) {
+//        printf("Error al crear el usuario\n");
+//        return;
+//    }
+//    printf("Ingresa el usuario: ");
+//    scanf("%49s", user->username);
+//    fflush(stdin);
+//    printf("Ingresa la contraseña: ");
+//    scanf("%49s", user->password);
+//    fflush(stdin);
+//    int result = register_user(FILE, user);
+//    if(result == 0) {
+//        printf("El usuario ha sido creado con éxito\n");
+//    } else {
+//        printf("Hubo un error al crear el usuario\n");
+//    }
+//    free(user);
+//}
+
+// implemento fgets en vez de scanf para tener mejor control del buffer
 void register_promp() {
     User *user = (User *)malloc(sizeof(User));
     if(user == NULL) {
         printf("Error al crear el usuario\n");
         return;
     }
-    printf("Ingresa el usuario: ");
-    scanf("%49s", user->username);
-    fflush(stdin);
-    printf("Ingresa la contraseña: ");
-    scanf("%49s", user->password);
-    fflush(stdin);
+
+    printf("Ingrese el usuario : ");
+    fgets(user->username, sizeof(user->username), stdin);
+    user->username[strcspn(user->username, "\n")] = '\0';
+
+    printf("Ingrese la clave : ");
+    fgets(user->password, sizeof(user->password), stdin);
+    user->password[strcspn(user->password, "\n")] = '\0';
+
     int result = register_user(FILE, user);
     if(result == 0) {
-        printf("El usuario ha sido creado con éxito\n");
+        printf("El usuario ha sido creado con exito\n");
     } else {
         printf("Hubo un error al crear el usuario\n");
     }
+
     free(user);
 }
+
+
+//void login_promp() {
+//    User *user = (User *)malloc(sizeof(User));
+//    if(user == NULL) {
+//        printf("Error al crear el usuario\n");
+//        return;
+//    }
+//    printf("Ingresa el usuario: ");
+//    scanf("%49s", user->username);
+//    fflush(stdin);
+//    printf("Ingresa la contraseña: ");
+//    scanf("%49s", user->password);
+//    fflush(stdin);
+//    int result = login_user(FILE, user);
+//    if(result == 0) {
+//        printf("Se ha iniciado sesión\n");
+//    } else {
+//        printf("Hubo un error al iniciar sesión\n");
+//    }
+//    free(user);
+//}
+
+// implemento fgets en vez de scanf para tener mejor control del buffer
+
 void login_promp() {
     User *user = (User *)malloc(sizeof(User));
     if(user == NULL) {
         printf("Error al crear el usuario\n");
         return;
     }
-    printf("Ingresa el usuario: ");
-    scanf("%49s", user->username);
-    fflush(stdin);
-    printf("Ingresa la contraseña: ");
-    scanf("%49s", user->password);
-    fflush(stdin);
+
+    printf("Ingrese el usuario : ");
+    fgets(user->username, sizeof(user->username), stdin);
+    user->username[strcspn(user->username, "\n")] = '\0';
+
+    printf("Ingrese la clave : ");
+    fgets(user->password, sizeof(user->password), stdin);
+    user->password[strcspn(user->password, "\n")] = '\0';
+
+    if (strlen(user->username) == 0 || strlen(user->password) == 0) {
+        printf("Error: usuario o clave vacios\n");
+        free(user);
+        return;
+    }
+
     int result = login_user(FILE, user);
     if(result == 0) {
-        printf("Se ha iniciado sesión\n");
+        printf("Se ha iniciado sesion\n");
     } else {
-        printf("Hubo un error al iniciar sesión\n");
+        printf("Hubo un error al iniciar sesion\n");
     }
+
     free(user);
 }
-
 
 void buscar_cuentas_por_id_promp() {
     User *user = (User *)malloc(sizeof(User));
@@ -102,12 +162,12 @@ void buscar_cuentas_por_id_promp() {
         printf("Error al crear el usuario\n");
         return;
     }
-    printf("Ingresa el ID a buscar: ");
+    printf("Ingrese el ID a buscar: ");
     scanf("%d", &(user->id));
     fflush(stdin);
     int result = buscar_cuentas_por_id(FILE, user);
     if (result == 0) {
-        printf("Búsqueda completada con éxito\n");
+        printf("Busqueda completada con exito\n");
     } else {
         printf("No se encontraron usuarios con el ID %d\n", user->id);
     }

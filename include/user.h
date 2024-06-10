@@ -13,5 +13,6 @@ int register_user(const char *file, User *user);
 int login_user(const char *file, User *user);
 int buscar_cuentas_por_id(const char *file, User *user);
 void encriptar_password(char *password);
+int generar_id(const char *file);
 
 #endif
