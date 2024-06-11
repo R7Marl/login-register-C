@@ -1,16 +1,33 @@
 # depslib dependency file v1.0
-1718063199 source:c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\login-register-c\src\main.c
+1718085995 source:c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\login-register-c\src\main.c
 	"../include/user.h"
 	"user.c"
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
 
-1718055390 c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\login-register-c\include\user.h
+1718085995 c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\login-register-c\include\user.h
 
-1718063038 c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\login-register-c\src\user.c
+1718088903 c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\login-register-c\src\user.c
 	"../include/user.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	<ctype.h>
+
+1718091794 source:c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\login-register-c - copia (3)\src\main.c
+	"../include/user.h"
+	"user.c"
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+
+1718090496 c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\login-register-c - copia (3)\include\user.h
+
+1718091289 c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\login-register-c - copia (3)\src\user.c
+	"../include/user.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
 
