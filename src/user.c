@@ -126,7 +126,7 @@ void encriptar_password(char *password) {
         // clave no son imprimibles, se realiza la operacion
         // resto con 95 y luego se le suma 32, para asegurarse
         // de que se encuentra entre los valores imprimibles de
-        // la tabla ASCII.
+        // la tabla ASCII, que van desde el espacio hasta la virguilla.
         if (!isprint(password[i])) {
             password[i] = (password[i] % 95) + 32;
         }

@@ -164,8 +164,9 @@ void register_promp() {
     fgets(user->password, sizeof(user->password), stdin);
     user->password[strcspn(user->password, "\n")] = '\0';
         // limito la clave para que sea de 10 caracteres exactamente
-    if (strlen(user->password) != 10) {
-        printf("\nLa clave debe contener 10 caracteres\n\n");
+
+        if (validar_password(user->password) != 0) {
+        printf("\nLa clave debe ser de 10 caracteres.\n\n");
         free(user);
         menu_principal();
         return;
