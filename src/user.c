@@ -171,7 +171,7 @@ void mostrar_informacion_usuario(const char *file, const char *username) {
         if (strcmp(archivo_usuario, username) == 0) {
             encriptar_password(archivo_clave);
             printf("\nInformacion del usuario:\n");
-            printf("ID : %d\n\n", id);
+           // printf("ID : %d\n\n", id);
             printf("Username: %s\n\n", archivo_usuario);
             printf("Numero de celular: %s\n\n", archivo_telefono);
             printf("Password: %s\n\n", archivo_clave);
@@ -182,4 +182,41 @@ void mostrar_informacion_usuario(const char *file, const char *username) {
 
     fclose(fp);
     printf("\nNo se encontro informacion para el usuario: %s\n", username);
+}
+
+int validar_telefono(const char *telefono) {
+    int longitud = strlen(telefono);
+    int i;
+    if (longitud != 10) {
+        return -1;
+    }
+    for (i = 0; i < longitud; i++) {
+        if (telefono[i] < '0' || telefono[i] > '9') {
+            return -1;
+        }
+    }
+    return 0;
+}
+
+int validar_nombre_usuario(const char *username) {
+    int longitud = strlen(username);
+    int i;
+    if (longitud == 0) {
+        return -1;
+    }
+
+    for (i = 0; i < longitud; i++){
+        if ((username[i] <= 'A' && username[i] >= 'Z') || (username[i] <= 'a' && username[i] >= 'z')) {
+            return -1;
+        }
+    }
+    return 0;
+}
+
+int validar_password(const char *password){
+    int longitud = strlen(password);
+    if (longitud ==0){
+        return -1;
+    }
+    return 0;
 }

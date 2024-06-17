@@ -44,7 +44,7 @@ void menu_principal(){
         printf("1. Registrar usuario\n");
         printf("2. Login \n");
         printf("3. Salir\n");
-        printf("Ingresa una opcion: ");
+        printf("Ingrese una opcion: ");
         // cambié scanf por fgets para tener mejor control del buffer de entrada
         fgets(input, sizeof(input), stdin);
         // condicion de que lo ingresado por el usuario sea un digito y no una letra o simbolo para no
@@ -152,6 +152,14 @@ void register_promp() {
     fgets(user->username, sizeof(user->username), stdin);
     user->username[strcspn(user->username, "\n")] = '\0';
 
+
+    if(validar_nombre_usuario(user->username) != 0){
+        printf("\nDebe ingresar un nombre de usuario y solo debe contener letras sin tildes.\n\n");
+        free(user);
+        menu_principal();
+        return;
+    }
+
     printf("Ingrese la clave : ");
     fgets(user->password, sizeof(user->password), stdin);
     user->password[strcspn(user->password, "\n")] = '\0';
@@ -166,7 +174,12 @@ void register_promp() {
     fgets(user->telefono, sizeof(user->telefono), stdin);
     user->telefono[strcspn(user->telefono, "\n")] = '\0';
 
-
+    if (validar_telefono(user->telefono) != 0) {
+        printf("\nEl numero de telefono que se ingrese debe tener 10 digitos y solamente deben ser numeros enteros\n\n");
+        free(user);
+        menu_principal();
+        return;
+    }
 
     int result = register_user(FILE, user);
 
@@ -242,3 +255,5 @@ void buscar_cuentas_por_id_promp() {
     free(user);
     menu_administrador();
 }
+
+
