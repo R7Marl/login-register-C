@@ -6,6 +6,7 @@ typedef struct
     char username[50];
     char password[12];
     int id;
+    char telefono[20];
 } User;
 
 // prototipos de funciones
@@ -15,4 +16,5 @@ int buscar_cuentas_por_id(const char *file, User *user);
 void encriptar_password(char *password);
 int generar_id(const char *file);
 
+void mostrar_informacion_usuario(const char *file, const char *username);
 #endif

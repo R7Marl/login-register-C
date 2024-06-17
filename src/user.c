@@ -4,6 +4,9 @@
 #include <string.h>
 #include <ctype.h> // esto es para usar la funcion isprint
 
+#define ADMIN_USER "admin23"
+#define ADMIN_PASS "passadmin"
+
 // funcion para registrar un usuario
 int register_user(const char *file, User *user) {
     if(user == NULL) {
@@ -22,7 +25,7 @@ int register_user(const char *file, User *user) {
     // se encripta la contraseña mediante encriptacion XOR antes de guardarse en el archivo
     encriptar_password(user->password);
     // escribe el usuario, password e ID en el archivo
-    fprintf(fp, "%s %s %d \n", user->username, user->password, user->id);
+    fprintf(fp, "%d %s %s %s\n", user->id, user->username, user->telefono, user->password);
     fclose(fp);
     return 0;
 }
@@ -39,21 +42,24 @@ int login_user(const char *file, User *user) {
         printf("\nError al abrir el archivo\n");
         return -1;
     }
+
+        if (strcmp(user->username, ADMIN_USER) == 0 && strcmp(user->password, ADMIN_PASS) == 0) {
+        return 1; // Es administrador
+    }
     // aqui se llama a la funcion de encriptacion para
     // desencriptar el password y asi poder compararlo
     // con la clave ingresada para el login
     encriptar_password(user->password);
-    char username[50], password[12];
-    while (fscanf(fp, "%50s %12s %d", username, password, &(user->id)) != EOF) {
+    char username[50], password[12], telefono[20];
+    while (fscanf(fp, "%d %50s %20s %12s", &(user->id), username, telefono, password) != EOF) {
 
-
-//        username[strcspn(username, "\n")] = '\0';
-//        password[strcspn(password, "\n")] = '\0';
         // a modo de muestra, se pueden ver por pantalla las distintas
         // cuentas creadas
-        printf("\nEsta es una prueba para ver los strings que se comparan: username='%s' password='%s' id='%d'\n", username, password, user->id);
+        //printf("\nEsta es una prueba para ver los strings que se comparan: id='%d' username='%s' password='%s' telefono='%s' \n", user->id, username, password, telefono);
 
         if (strcmp(username, user->username) == 0 && strcmp(password, user->password) == 0) {
+            // si es usuario o si es administrador devuelve un valor u otro
+            strcpy(user->telefono, telefono);
             fclose(fp);
             return 0;
         }
@@ -78,16 +84,16 @@ if (user == NULL) {
         return -1;
     }
     int id;
-    // a modo de muestra, se muestra tambien el password, que en una version
-    // usable para un negocio no se deberia mostrar
-    while (fscanf(fp, "%49s %12s %d", user->username, user->password, &id) != EOF) {
+    // muestra los datos del usuario buscado, incluyendo la clave encriptada
+    while (fscanf(fp, "%d %49s %20s %12s ", &id, user->username, user->telefono, user->password) != EOF) {
         if (id == user->id) {
             // a modo de muestra del password se puede desencriptar aqui
             //encriptar_password(user->password);
-            printf("Usuario encontrado:\n");
-            printf("Username: %s\n", user->username);
-            printf("Password: %s\n", user->password);
+            printf("Usuario encontrado:\n\n");
             printf("ID: %d\n", user->id);
+            printf("Username: %s\n", user->username);
+            printf("Telefono: %s\n", user->telefono);
+            printf("Password: %s\n\n", user->password);
             fclose(fp);
             // si hay coincidencias con el id, devuelve 0
             return 0;
@@ -146,4 +152,34 @@ int generar_id(const char *file){
         fprintf(fp, "%d", contador_id);
     fclose(fp);
     return id_nuevo;
+}
+
+
+void mostrar_informacion_usuario(const char *file, const char *username) {
+    FILE *fp = fopen(file, "r");
+    if (fp == NULL) {
+        printf("\nError al abrir el archivo\n");
+        return;
+    }
+    char archivo_usuario[50];
+    char archivo_clave[12];
+    char archivo_telefono[20];
+    int id;
+    // esto lee el contenido del archivo para cada campo ingresado por el usuario, entonces
+    // imprime por pantalla el contenido de cada uno
+    while (fscanf(fp, "%d %49s %19s %10s", &id, archivo_usuario, archivo_telefono, archivo_clave) != EOF) {
+        if (strcmp(archivo_usuario, username) == 0) {
+            encriptar_password(archivo_clave);
+            printf("\nInformacion del usuario:\n");
+            printf("ID : %d\n\n", id);
+            printf("Username: %s\n\n", archivo_usuario);
+            printf("Numero de celular: %s\n\n", archivo_telefono);
+            printf("Password: %s\n\n", archivo_clave);
+            fclose(fp);
+            return;
+        }
+    }
+
+    fclose(fp);
+    printf("\nNo se encontro informacion para el usuario: %s\n", username);
 }
