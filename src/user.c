@@ -119,12 +119,10 @@ void encriptar_password(char *password) {
     // y se aplica la operacion xor con la clave_XOR
     for (int i = 0; i < len; i++) {
         password[i] = password[i] ^ clave_XOR[i % len_clave];
-        // isprint es una funcion de <ctype.h> que
-        // asegura que los caracteres sean imprimibles
-        // en esta condicion, si los caracteres de la
-        // clave no son imprimibles, se realiza la operacion
+        // si los caracteres se encuentran fuera de los valores ASCII 32 y 126,
+        // se realiza la operacion
         // resto con 95 y luego se le suma 32, para asegurarse
-        // de que se encuentra entre los valores imprimibles de
+        // de que los caracteres se encuentran entre los valores imprimibles de
         // la tabla ASCII, que van desde el espacio hasta la virguilla.
         if (password[i] < 32 || password[i] > 126) {
             password[i] = (password[i] % 95) + 32;
