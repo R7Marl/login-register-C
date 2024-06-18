@@ -91,9 +91,9 @@ if (user == NULL) {
             //encriptar_password(user->password);
             printf("Usuario encontrado:\n\n");
             printf("ID: %d\n", user->id);
-            printf("Username: %s\n", user->username);
+            printf("Nombre de usuario: %s\n", user->username);
             printf("Telefono: %s\n", user->telefono);
-            printf("Password: %s\n\n", user->password);
+            printf("Clave: %s\n\n", user->password);
             fclose(fp);
             // si hay coincidencias con el id, devuelve 0
             return 0;
@@ -172,9 +172,9 @@ void mostrar_informacion_usuario(const char *file, const char *username) {
             encriptar_password(archivo_clave);
             printf("\nInformacion del usuario:\n");
            // printf("ID : %d\n\n", id);
-            printf("Username: %s\n\n", archivo_usuario);
+            printf("Nombre de usuario: %s\n\n", archivo_usuario);
             printf("Numero de celular: %s\n\n", archivo_telefono);
-            printf("Password: %s\n\n", archivo_clave);
+            printf("Clave: %s\n\n", archivo_clave);
             fclose(fp);
             return;
         }

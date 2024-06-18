@@ -95,3 +95,19 @@
 	<string.h>
 	<ctype.h>
 
+1718667059 source:c:\users\pecelis\documents\github\login-register-c\src\main.c
+	"../include/user.h"
+	"user.c"
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+
+1718673772 c:\users\pecelis\documents\github\login-register-c\include\user.h
+
+1718673998 c:\users\pecelis\documents\github\login-register-c\src\user.c
+	"../include/user.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
