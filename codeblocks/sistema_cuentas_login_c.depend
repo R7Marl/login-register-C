@@ -79,21 +79,20 @@
 	<string.h>
 	<ctype.h>
 
-1718663190 source:c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\login-register-c - terminado - actualizado 16-06 - copia\src\main.c
+1718667059 source:c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\login-register-c - terminado - actualizado 16-06 - copia\src\main.c
 	"../include/user.h"
 	"user.c"
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
 
-1718662175 c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\login-register-c - terminado - actualizado 16-06 - copia\include\user.h
+1718673772 c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\login-register-c - terminado - actualizado 16-06 - copia\include\user.h
 
-1718666705 c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\login-register-c - terminado - actualizado 16-06 - copia\src\user.c
+1718675254 c:\users\pecelis\desktop\desarrollo de software\estructura de datos y algoritmos i 2024\login-register-c - terminado - actualizado 16-06 - copia\src\user.c
 	"../include/user.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
-	<ctype.h>
 
 1718667059 source:c:\users\pecelis\documents\github\login-register-c\src\main.c
 	"../include/user.h"

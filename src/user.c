@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h> // esto es para usar la funcion isprint
 
 #define ADMIN_USER "admin23"
 #define ADMIN_PASS "passadmin"
@@ -127,7 +126,7 @@ void encriptar_password(char *password) {
         // resto con 95 y luego se le suma 32, para asegurarse
         // de que se encuentra entre los valores imprimibles de
         // la tabla ASCII, que van desde el espacio hasta la virguilla.
-        if (!isprint(password[i])) {
+        if (password[i] < 32 || password[i] > 126) {
             password[i] = (password[i] % 95) + 32;
         }
     }
@@ -170,7 +169,7 @@ void mostrar_informacion_usuario(const char *file, const char *username) {
     while (fscanf(fp, "%d %49s %19s %10s", &id, archivo_usuario, archivo_telefono, archivo_clave) != EOF) {
         if (strcmp(archivo_usuario, username) == 0) {
             encriptar_password(archivo_clave);
-            printf("\nInformacion del usuario:\n");
+            printf("\nInformacion del usuario:\n\n");
            // printf("ID : %d\n\n", id);
             printf("Nombre de usuario: %s\n\n", archivo_usuario);
             printf("Numero de celular: %s\n\n", archivo_telefono);
